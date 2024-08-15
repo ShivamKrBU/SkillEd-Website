@@ -1,7 +1,19 @@
+import React, { useEffect, useState } from 'react';
 import lap from "../../Dashboard/Admin_assests/banner1.jpg";
 import { CgProfile } from "react-icons/cg";
 
 export default function Profile() {
+  const [userData, setUserData] = useState({
+    name: "",
+    email: ""
+  });
+
+  useEffect(() => {
+    const name = localStorage.getItem('Name') || "User"; // Get name from local storage
+    const email = localStorage.getItem('Email') || "example@gmail.com"; // Get email from local storage
+    setUserData({ name, email });
+  }, []);
+
   return (
     <>
       <div className="max-w-screen py-5">
@@ -117,8 +129,8 @@ export default function Profile() {
             </div>
 
             <div className="flex flex-col items-center py-10">
-              <p className="text-xl font-bold">User</p>
-              <p className="text-base">example@gmail.com</p>
+              <p className="text-xl font-bold">{userData.name}</p> {/* Display user's name */}
+              <p className="text-base">{userData.email}</p> {/* Display user's email */}
               <p className="text-xs text-gray-500">New Delhi (India)</p>
             </div>
             <div className="space-x-3 text-center">

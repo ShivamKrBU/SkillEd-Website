@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../Assets/HeaderImages/logo.png";
 import { FiMenu, FiX } from "react-icons/fi";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../Redux-react/Reducer/LoginReducer";
+import { useAuth } from "../../Components/Store/Auth";  // Import the useAuth hook
 
 export default function HeaderComponent() {
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, removeTokenFromLs } = useAuth();  // Access isAuthenticated and removeTokenFromLs from context
 
   const scrollHandleHome = () => {
     window.scrollTo({
@@ -40,7 +38,7 @@ export default function HeaderComponent() {
   }
 
   const handleLogout = () => {
-    dispatch(logout());
+    removeTokenFromLs();  // Clear localStorage when logging out
   };
 
   return (

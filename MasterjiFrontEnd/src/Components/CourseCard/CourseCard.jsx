@@ -15,7 +15,7 @@ const CourseCard = ({ fees, duration, title, level, id }) => {
                 <p className="text-sm">{duration}</p>
                 <div className="flex justify-between">
                     <p className="text-sm">{level}</p>
-                    <p className="text-2xl font-bold text-blue-700 pb-4">${fees}</p>
+                    <p className="text-2xl font-bold text-blue-700 pb-4">₹{fees}</p>
                 </div>
             </div>
             <div>

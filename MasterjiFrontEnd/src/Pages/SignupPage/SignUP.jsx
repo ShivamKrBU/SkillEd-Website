@@ -25,15 +25,15 @@ function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!emailRegex.test(values.email) || !passwordRegex.test(values.password)) {
-      setShowPopup(true);
-      setPopupType("error");
-      setPopupMessage("Please enter a valid email and password.");
-      setTimeout(() => {
-        setShowPopup(false);
-      }, 2000);
-      return;
-    }
+    // if (!emailRegex.test(values.email) || !passwordRegex.test(values.password)) {
+    //   setShowPopup(true);
+    //   setPopupType("error");
+    //   setPopupMessage("Please enter a valid email and password.");
+    //   setTimeout(() => {
+    //     setShowPopup(false);
+    //   }, 2000);
+    //   return;
+    // }
 
     dispatch(SignUpUser(values))
       .unwrap()

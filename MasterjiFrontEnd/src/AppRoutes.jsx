@@ -40,12 +40,13 @@ function AppRoutes() {
         <Route index element={<LandingPage />} />
         <Route path="termsAndCondition" element={<Suspense fallback={<Spinner />}><TermsAndConditon /></Suspense>} />
         <Route path="courseDetail" element={<CoursePage />} />
+       
       </Route>
       <Route element={<PrivateRoute />}>
         <Route path="/quizs" element={<Quiz />} />
         <Route path="/dashboard" element={<Suspense fallback={<Spinner />}><DashboardLayout /></Suspense>}>
 
-          <Route index element={<Dashboard />} />
+        <Route index element={<Dashboard />} />          
           <Route path="addcoursedetails" element={<AddCourseDetailsPage />} />
           <Route path="score" element={<Score />} />
           <Route path="mycourse" element={<MyCourse />} />
@@ -63,10 +64,12 @@ function AppRoutes() {
             <Route path="notification" element={<NotificationSetting />} />
             <Route path="help" element={<Help />} />
           </Route>
-        </Route>
+          </Route>
+        
       </Route>
       <Route path="/signIn" element={<Suspense fallback={<Spinner />}><SignIn /></Suspense>} />
       <Route path="/signUp" element={<Suspense fallback={<Spinner />}><SignUp /></Suspense>} />
+     
       <Route path="*" element={<Suspense fallback={<Spinner />}><Admin_404 /></Suspense>} />
     </Routes>
   );

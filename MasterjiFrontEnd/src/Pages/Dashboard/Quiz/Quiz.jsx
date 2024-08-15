@@ -33,7 +33,7 @@ function Quiz() {
 
   const fetchQuestions = async () => {
     try {
-      const courseId = 2;
+      const courseId = 8;
       const response = await dispatch(addQuizAction(courseId)).unwrap();
       const { questions } = response;
       const questionsArray = Object.values(questions);

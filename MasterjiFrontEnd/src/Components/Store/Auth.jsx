@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const removeTokenFromLs = () => {
-        localStorage.removeItem("token");
+        localStorage.clear();
         setIsAuthenticated(false);
     };
 

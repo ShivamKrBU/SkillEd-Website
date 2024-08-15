@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { RiCloseLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
@@ -12,11 +12,14 @@ import { MdOutlineDashboard, MdOutlineSportsScore } from "react-icons/md";
 import { CgFileAdd } from "react-icons/cg";
 import { SiReadthedocs } from "react-icons/si";
 import logo from "../../../Assets/HeaderImages/logo.png";
+import { useAuth } from "../../../Components/Store/Auth";
 
 function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   let menuref = useRef();
+  const { removeTokenFromLs } = useAuth(); // Use the removeTokenFromLs function
+  const navigate = useNavigate(); // useNavigate to redirect after logout
 
   useEffect(() => {
     const handleClick = (event) => {
@@ -35,6 +38,11 @@ function DashboardLayout() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSignOut = () => {
+    removeTokenFromLs(); // Remove token from localStorage
+    navigate("/"); // Redirect to login page or any other page after logout
   };
 
   return (
@@ -168,12 +176,12 @@ function DashboardLayout() {
                 >
                   Inbox
                 </NavLink>
-                <NavLink
-                  to="#"
-                  className="block px-4 py-2 text-sm font-medium text-red-500"
+                <button
+                  onClick={handleSignOut}
+                  className="block px-4 py-2 text-sm font-medium text-red-500 w-full text-left"
                 >
                   Sign out
-                </NavLink>
+                </button>
               </div>
             )}
           </div>

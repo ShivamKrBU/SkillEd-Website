@@ -1,9 +1,10 @@
 import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const PrivateRoute = () => {
-    const { isAuthenticated } = useSelector((state) => state.user);
+    const token = localStorage.getItem('token'); // Retrieve the token from local storage
+    const isAuthenticated = !!token; // Check if the token exists
+
     return isAuthenticated ? <Outlet /> : <Navigate to="/signIn" />;
 };
 

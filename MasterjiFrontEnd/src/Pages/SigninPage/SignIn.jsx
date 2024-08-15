@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAuth } from "../../Components/Store/Auth"; // Adjust the path to your AuthProvider
 import loginUser from "../../Components/Redux-react/Action/getLoginApi";
 import Validation from "../../Components/LoginPageValidation/LoginPageValidation";
 import Popup from "../../Components/AlertPage/Popup";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  // const { status, error, user, isAuthenticated } = useSelector(state => state.user);
+  const { storeTokenInLs } = useAuth(); // Get the method to store the token in localStorage
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -36,6 +37,11 @@ const SignIn = () => {
       dispatch(loginUser(userData))
         .then((res) => {
           if (loginUser.fulfilled.match(res)) {
+            // Store the token and user data in localStorage
+            const { full_name, email } = res.payload.user;
+            const token = res.payload.token;
+            storeTokenInLs(token, full_name, email); // Use the AuthContext method
+
             setShowSuccessPopup(true);
             setTimeout(() => {
               setShowSuccessPopup(false);
