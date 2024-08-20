@@ -8,9 +8,9 @@ import { logger } from './Config/Logger/Winston';
 import { globalExceptionHander } from './Handlers/GlobalExceptionHandler';
 import { env } from './Config/env';
 
-let baseURl = ["http://localhost:5173"];
+let baseURl = ["https://skill-ed-website-wdat.vercel.app/"];
 if (process.env.NODE_ENV !== 'production') {
-  baseURl.push('http://localhost:5173');
+  baseURl.push('https://skill-ed-website-wdat.vercel.app/');
 }
 if (process.env.NODE_ENV === 'production') {
   baseURl.push('https://skill-ed-website-wdat.vercel.app/');
