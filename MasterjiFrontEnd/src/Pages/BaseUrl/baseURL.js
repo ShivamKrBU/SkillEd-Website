@@ -1,3 +1,3 @@
-const baseURL = 'http://localhost:8001/api/';
+const baseURL = 'https://skilled-website.onrender.com/api';
 
 export default baseURL; 

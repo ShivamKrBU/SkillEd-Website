@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
   baseURl.push('http://localhost:5173');
 }
 if (process.env.NODE_ENV === 'production') {
-  baseURl.push('http://localhost:5173');
+  baseURl.push('https://skill-ed-website-wdat.vercel.app/');
 }
 
 if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
